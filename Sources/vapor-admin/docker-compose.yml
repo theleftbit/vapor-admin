@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: {{DotEnv.POSTGRES_USER}}
+      POSTGRES_DB: {{DotEnv.POSTGRES_DATABASE}}
+      POSTGRES_PASSWORD: {{DotEnv.POSTGRES_PASSWORD}}
+    ports:
+        - {{DotEnv.POSTGRES_PORT}}:{{DotEnv.POSTGRES_PORT}}
+  redis:
+    image: 'redis:7-alpine'
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - REDIS_DISABLE_COMMANDS=FLUSHDB,FLUSHALL
+    ports:
+      - {{DotEnv.REDIS_PORT}}:{{DotEnv.REDIS_PORT}}
