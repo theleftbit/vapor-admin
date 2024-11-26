@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "vapor-admin",
     platforms: [
-       .macOS(.v13)
+        .macOS(.v15)
     ],
     dependencies: [
         // 💧 A server-side Swift web framework.
@@ -20,7 +20,7 @@ let package = Package(
     ],
     targets: [
         .executableTarget(
-            name: "App",
+            name: "VaporAdmin",
             dependencies: [
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
@@ -32,18 +32,19 @@ let package = Package(
             swiftSettings: swiftSettings
         ),
         .testTarget(
-            name: "AppTests",
+            name: "VaporAdminTests",
             dependencies: [
-                .target(name: "App"),
+                .target(name: "VaporAdmin"),
                 .product(name: "XCTVapor", package: "vapor"),
             ],
             swiftSettings: swiftSettings
-        )
+        ),
     ],
     swiftLanguageModes: [.v5]
 )
 
-var swiftSettings: [SwiftSetting] { [
-    .enableUpcomingFeature("DisableOutwardActorInference"),
-    .enableExperimentalFeature("StrictConcurrency"),
-] }
+var swiftSettings: [SwiftSetting] {
+    [    .enableUpcomingFeature("DisableOutwardActorInference"),
+         .enableExperimentalFeature("StrictConcurrency"),
+    ]
+}
