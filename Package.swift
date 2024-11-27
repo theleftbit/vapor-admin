@@ -12,7 +12,10 @@ let package = Package(
             targets: ["VaporAdmin"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", from: .init(4, 0, 0))
+        .package(url: "https://github.com/vapor/vapor.git", from: .init(4, 0, 0)),
+        .package(url: "https://github.com/vapor/fluent.git", from: .init(4, 0, 0)),
+        .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: .init(4, 0, 0)),
+
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
