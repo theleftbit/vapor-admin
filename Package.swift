@@ -8,17 +8,17 @@ let package = Package(
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "vapor-admin",
-            targets: ["vapor-admin"]),
+            name: "VaporAdmin",
+            targets: ["VaporAdmin"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "vapor-admin"),
+            name: "VaporAdmin"),
         .testTarget(
-            name: "vapor-adminTests",
-            dependencies: ["vapor-admin"]
+            name: "VaporAdminTests",
+            dependencies: ["VaporAdmin"]
         ),
     ]
 )
