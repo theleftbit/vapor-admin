@@ -6,6 +6,9 @@ let package = Package(
     platforms: [
         .macOS(.v15)
     ],
+    products: [
+        .library(name: "VaporAdmin", targets: ["VaporAdmin"]),
+    ],
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.99.3"),
