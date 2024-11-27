@@ -6,9 +6,7 @@ let package = Package(
     platforms: [
         .macOS(.v15)
     ],
-    products: [
-        .library(name: "VaporAdmin", targets: ["VaporAdmin"]),
-    ],
+
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.99.3"),
@@ -28,22 +26,7 @@ let package = Package(
                  from: "5.0.0")
     ],
     targets: [
-        .executableTarget(
-            name: "VaporAdmin",
-            dependencies: [
-                .product(name: "Fluent", package: "fluent"),
-                .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver"),
-                .product(name: "Leaf", package: "leaf"),
-                .product(name: "Vapor", package: "vapor"),
-                .product(name: "NIOCore", package: "swift-nio"),
-                .product(name: "NIOPosix", package: "swift-nio"),
-                .product(name: "JWT", package: "jwt"),
-                .product(name: "QueuesRedisDriver",
-                         package: "queues-redis-driver"),
-                .product(name: "Mailgun", package: "mailgun"),
-            ],
-            swiftSettings: swiftSettings
-        ),
+        
         .testTarget(
             name: "VaporAdminTests",
             dependencies: [
