@@ -10,8 +10,15 @@ public class VaporAdmin {
         """
     }
     
+    
     static public func confgiureDB() throws {
         
+    }
+    
+    static public func adminRoutes(for app: Vapor.Application) throws {
+        app.get("admin") { req async -> String in
+            VaporAdmin.banner()
+        }
     }
     
 }
