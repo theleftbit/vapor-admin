@@ -21,10 +21,10 @@ struct AuthenticationController: RouteCollection {
             
             auth.post("accessToken", use: refreshAccessToken)
             
-            // Authentication required
-            auth.group(UserAuthenticator()) { authenticated in
-                authenticated.get("me", use: getCurrentUser)
-            }
+//            // Authentication required
+//            auth.group(UserAuthenticator()) { authenticated in
+//                authenticated.get("me", use: getCurrentUser)
+//            }
         }
     }
     

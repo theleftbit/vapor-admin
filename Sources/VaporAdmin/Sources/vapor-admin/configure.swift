@@ -70,7 +70,7 @@ extension VaporAdmin {
         
     }
     
-    private func configurePostgresDatabase(for app: Application) throws {
+    public static func configurePostgresDatabase(for app: Application) throws {
         
         let hostname = Environment.get("POSTGRES_HOSTNAME") ?? "localhost"
         let username = Environment.get("POSTGRES_USERNAME") ?? "vapor"

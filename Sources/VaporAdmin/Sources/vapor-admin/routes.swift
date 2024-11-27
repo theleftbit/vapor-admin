@@ -3,11 +3,11 @@ import Vapor
 
 extension VaporAdmin {
     
-    public static func registerRoutes(for app:V apor.Application) {
-        try route(for: app)
+    public static func registerRoutes(for app: Vapor.Application) throws {
+        try routes(app)
     }
     
-    func routes(_ app: Application) throws {
+    public static func routes(_ app: Application) throws {
         app.logger.info("Configuring routes...")
         app.group("api") { api in
             // Authentication
