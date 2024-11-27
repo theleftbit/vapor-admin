@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "vapor-admin",
+    platforms: [
+        .macOS(.v15)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -13,8 +16,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: .init(4, 0, 0)),
-        .package(url: "https://github.com/vapor/fluent.git", from: .init(4, 0, 0)),
-        .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: .init(4, 0, 0)),
+        .package(url: "https://github.com/vapor/fluent.git", from: .init(4, 12, 0)),
+        .package(url: "https://github.com/vapor/fluent-postgres-driver.git", from: .init(2, 0, 0)),
 
     ],
     targets: [
@@ -23,7 +26,7 @@ let package = Package(
         .target(
             name: "VaporAdmin",
             dependencies: [
-                
+                .product(name: "Vapor", package: "vapor")
             ]),
         .testTarget(
             name: "VaporAdminTests",
