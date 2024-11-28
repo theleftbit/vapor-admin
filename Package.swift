@@ -26,7 +26,11 @@ let package = Package(
         .target(
             name: "VaporAdmin",
             dependencies: [
-                .product(name: "Vapor", package: "vapor")
+                .product(name: "Vapor", package: "vapor"),
+                .product(name: "Fluent", package: "Fluent"),
+                .product(name: "FluentPostgresDriver", package: "fluent-postgres-driver")
+
+
             ]),
         .testTarget(
             name: "VaporAdminTests",
