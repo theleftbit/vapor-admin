@@ -6,6 +6,13 @@ import Fluent
 import FluentPostgresDriver
 
 import Foundation
+import FluentKit
+
+extension DatabaseID {
+    public static var vaporAdminDB: DatabaseID {
+        .init(string: "vapor-admin-db")
+    }
+}
 
 public class VaporAdmin {
     static public func banner() -> String {
@@ -15,9 +22,8 @@ public class VaporAdmin {
     }
     
     static public func confgiureDB(for app: Vapor.Application) throws {
-        app.logger.info("configuring admin db")
+        app.logger.info("configuring admin db...")
         
-//        app.databases.use(<db config>, as: <identifier>)
         app.databases.use(
             .postgres(
                 configuration: .init(
@@ -28,26 +34,30 @@ public class VaporAdmin {
                     tls: .disable
                 )
             ),
-            as: .psql
+            as: .vaporAdminDB
         )
+        app.logger.info("configured admin db.")
         
         app.migrations.add(AdminUser.migration(.one))
-        // run migrations for admin user db
-        // run migrations for acls?
+        app.logger.info("added admin user migration.")
     }
     
-    static public func adminAPIRoutes(for app: Vapor.Application) throws {
+    static public func addAdminAPIRoutes(to app: Vapor.Application) throws {
+        
         app.get("admin", "api") { req async -> String in
               """
               Vapor Admin API
               """
         }
+        app.logger.info("admin api routes added.")
     }
     
-    static public func adminRoutes(for app: Vapor.Application) throws {
+    static public func addAdminRoutes(to app: Vapor.Application) throws {
+        
         app.get("admin") { req async -> String in
             VaporAdmin.banner()
         }
+        app.logger.info("admin routes added.")
     }
     
     public final class AdminUser: Model, @unchecked Sendable {
@@ -89,6 +99,7 @@ public extension VaporAdmin.AdminUser {
     struct Migration1: AsyncMigration {
         public func prepare(on database: Database) async throws {
             // Make a change to the database.
+            
         }
         
         public func revert(on database: Database) async throws {
